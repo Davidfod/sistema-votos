@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votos</title>
+    <style>
+        /* Ajuste para garantir que nada saia da tela */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container principal flexível */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh; /* Deixa espaço para o rodapé */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .pontos-container {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 20px 0;
+            transition: color 0.3s ease;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .btn-subir {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .btn-subir:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-abaixar {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-abaixar:hover {
+            background-color: #c0392b;
+        }
+
+        /* Rodapé fixo embaixo, garantindo visibilidade */
+        .creditos {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-weight: 500;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="container">
+            <h2>Avalie este item</h2>
+            
+            <div class="pontos-container" id="contador-pontos">0</div>
+            
+            <div class="botoes">
+                <button class="btn-abaixar" onclick="mudarPontos(-1)">-1</button>
+                <button class="btn-subir" onclick="mudarPontos(1)">+1</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="creditos">
+        Site criado por: <strong>CyberNoDry_ofc</strong>
+    </div>
+
+    <script>
+        let pontos = 0;
+
+        function mudarPontos(valor) {
+            pontos += valor;
+            const elementoPontos = document.getElementById('contador-pontos');
+            elementoPontos.innerText = pontos;
+
+            if (pontos > 0) {
+                elementoPontos.style.color = '#2ecc71';
+            } else if (pontos < 0) {
+                elementoPontos.style.color = '#e74c3c';
+            } else {
+                elementoPontos.style.color = '#2c3e50';
+            }
+        }
+    </script>
+
+</body>
+</html>
